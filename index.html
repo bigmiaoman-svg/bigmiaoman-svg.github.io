@@ -3,50 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jinse · 金色传说</title>
-<meta name="description" content="诚顺的个人主页 — 技术 / 加密 / 系统搭建">
+<title>jinse.md · 金色传说情报网络</title>
 <style>
-  :root { color-scheme: light dark; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #eaeaea; padding: 24px;
-  }
-  .card {
-    max-width: 560px; width: 100%; text-align: center;
-    background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 48px 40px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  }
-  h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: 2px; }
-  .sub { margin-top: 12px; font-size: 1.05rem; opacity: 0.85; }
-  .tagline { margin-top: 24px; font-size: 0.95rem; line-height: 1.8; opacity: 0.75; }
-  .links { margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .links a {
-    display: inline-block; padding: 10px 22px; border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.25); color: #eaeaea;
-    text-decoration: none; font-size: 0.92rem; transition: all 0.2s;
-  }
-  .links a:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-  footer { margin-top: 36px; font-size: 0.78rem; opacity: 0.5; }
+:root{
+  --bg:#070b12; --bg2:#0c1322; --card:#101a2c; --card2:#0d1526;
+  --line:#1c2a42; --line2:#243554;
+  --gold:#f0b90b; --gold2:#e6a700; --cyan:#22d3ee; --green:#10b981; --red:#ef4444; --purple:#a78bfa;
+  --txt:#e6edf7; --dim:#8b9bb4; --dim2:#5b6b85;
+  --mono:'SF Mono','JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+[data-theme="light"]{
+  --bg:#f4f7fb; --bg2:#eef2f8; --card:#ffffff; --card2:#f1f5fa;
+  --line:#e2e8f0; --line2:#cbd5e1;
+  --gold:#b8860b; --gold2:#a16207; --cyan:#0284c7; --green:#059669; --red:#dc2626; --purple:#7c3aed;
+  --txt:#0f172a; --dim:#475569; --dim2:#94a3b8;
+}
+[data-theme="light"] body{
+  background-image:
+    radial-gradient(1100px 500px at 85% -10%, rgba(2,132,199,.08), transparent),
+    radial-gradient(900px 400px at 5% -5%, rgba(184,134,11,.07), transparent),
+    radial-gradient(700px 400px at 50% 110%, rgba(5,150,105,.05), transparent);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh;
+  background-image:
+    radial-gradient(1100px 500px at 85% -10%, rgba(34,211,238,.07), transparent),
+    radial-gradient(900px 400px at 5% -5%, rgba(240,185,11,.06), transparent),
+    radial-gradient(700px 400px at 50% 110%, rgba(16,185,129,.05), transparent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}
+.brand{font-size:18px;font-weight:800;letter-spacing:.5px}
+.brand .g{color:var(--gold)}
+.brand .sub{font-size:11px;color:var(--dim2);font-weight:400;margin-left:8px}
+.nav a{color:var(--dim);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid transparent;transition:.15s}
+.nav a:hover{color:var(--txt);background:var(--card)}
+.nav a.on{color:var(--gold);border-color:var(--line2);background:var(--card)}
+.theme-btn{margin-left:6px;background:var(--card);border:1px solid var(--line2);color:var(--txt);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.15s}
+.theme-btn:hover{border-color:var(--gold);transform:scale(1.05)}
+
+.hero{text-align:center;padding:42px 0 20px;margin-bottom:24px}
+.hero .name{font-size:34px;font-weight:800;letter-spacing:1px}
+.hero .name .g{color:var(--gold)}
+.hero .slogan{font-size:16px;color:var(--dim);margin-top:10px;font-weight:400}
+.hero .tagline{margin-top:8px;display:inline-block;font-size:12px;color:var(--gold);border:1px solid rgba(240,185,11,.3);border-radius:99px;padding:3px 14px;background:rgba(240,185,11,.06)}
+[data-theme="light"] .hero .tagline{border-color:rgba(184,134,11,.3);background:rgba(184,134,11,.06)}
+
+.statusbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:12px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:26px;font-size:12px;color:var(--dim);background:var(--card)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(16,185,129,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.badge-24h{background:rgba(240,185,11,.12);border:1px solid rgba(240,185,11,.35);color:var(--gold);padding:2px 10px;border-radius:99px;font-weight:700;font-size:11px;letter-spacing:.5px}
+[data-theme="light"] .badge-24h{background:rgba(184,134,11,.08);border-color:rgba(184,134,11,.35)}
+.meta b{color:var(--txt);font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+h2.sec{font-size:15px;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+h2.sec::before{content:'';width:4px;height:16px;border-radius:2px;background:var(--gold)}
+
+/* 四站数据卡 */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.site{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;text-decoration:none;color:var(--txt);transition:.15s;display:block;position:relative;overflow:hidden}
+.site:hover{border-color:var(--line2);transform:translateY(-2px)}
+.site .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.site .d{font-size:17px;font-weight:800}
+.site .d small{font-weight:400;font-size:11px;color:var(--dim2);margin-left:6px}
+.site .live{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px}
+.site .live .sd{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.site .nums{display:flex;gap:22px}
+.site .num .v{font-size:24px;font-weight:800;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.site .num .l{font-size:11px;color:var(--dim2);margin-top:2px}
+.site .go{position:absolute;right:18px;bottom:16px;font-size:11px;color:var(--dim2);border:1px solid var(--line2);padding:3px 12px;border-radius:6px}
+.site:hover .go{color:var(--gold);border-color:rgba(240,185,11,.4)}
+.site.c1 .d{color:var(--gold)} .site.c1 .num .v{color:var(--gold)}
+.site.c2 .d{color:var(--cyan)} .site.c2 .num .v{color:var(--cyan)}
+.site.c3 .d{color:var(--purple)} .site.c3 .num .v{color:var(--purple)}
+.site.c4 .d{color:var(--green)} .site.c4 .num .v{color:var(--green)}
+
+/* AI 板块 */
+.airow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.aic{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.aic .n{font-weight:800;font-size:15px;margin-bottom:8px}
+.aic .r{font-size:11px;color:var(--gold);margin-bottom:8px}
+.aic .d{font-size:12px;color:var(--dim);line-height:1.7}
+.aic .tag{display:inline-block;font-size:10px;padding:1px 8px;border-radius:5px;border:1px solid var(--line2);color:var(--dim2);margin-top:8px;margin-right:6px}
+
+.src{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.src .s{font-size:11px;color:var(--dim2);background:var(--card2);border:1px solid var(--line);padding:3px 10px;border-radius:99px}
+
+footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px;color:var(--dim2)}
+@media(max-width:760px){.grid,.airow{grid-template-columns:1fr}.wrap{padding:0 12px 40px}}
 </style>
 </head>
 <body>
-  <main class="card">
-    <h1>诚顺</h1>
-    <p class="sub">Jinse · 金色传说</p>
-    <p class="tagline">
-      技术 / 系统搭建 / 加密与链上<br>
-      把复杂的事拆小，把想法变成现实
-    </p>
-    <nav class="links">
-      <a href="https://arb.md">arb.md</a>
-      <a href="https://pump.md">pump.md</a>
-      <a href="https://github.com/bigmiaoman-svg" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-    <footer>© 2026 Jinse · jinse.md</footer>
-  </main>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">jinse<span class="g">.md</span><span class="sub">金色传说情报网络</span></div>
+    <div class="nav">
+      <a href="#" class="on">jinse.md</a>
+      <a href="https://arb.md/">arb.md</a>
+      <a href="https://pump.md/">pump.md</a>
+      <a href="https://hunt.md/">hunt.md</a>
+      <button class="theme-btn" id="themeBtn" title="切换深浅色">🌙</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="name">张诚顺<span class="g"> · 金色传说情报网络</span></div>
+    <div class="slogan">选择之前看命理，选择之后看数据</div>
+    <span class="tagline">以诚致顺 · 四个雷达，一个网络</span>
+  </div>
+
+  <div class="statusbar">
+    <span class="dot"></span>
+    <span>系统在线 <b id="uptime">--</b></span>
+    <span class="badge-24h">四站 24H 更新一次</span>
+    <span><b id="lastUpd">--</b> 上次全量更新</span>
+  </div>
+
+  <h2 class="sec">实时数据墙</h2>
+  <div class="grid">
+    <a class="site c1" href="https://arb.md/">
+      <div class="top"><span class="d">arb.md<small>套利监控台</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="nums">
+        <div class="num"><div class="v" id="arbCand">--</div><div class="l">候选对</div></div>
+        <div class="num"><div class="v" id="arbOk">--</div><div class="l">可交易</div></div>
+        <div class="num"><div class="v" id="arbNet">--</div><div class="l">最大净收益</div></div>
+      </div>
+      <span class="go">进入 →</span>
+    </a>
+    <a class="site c4" href="https://hunt.md/">
+      <div class="top"><span class="d">hunt.md<small>新项目雷达</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="nums">
+        <div class="num"><div class="v" id="huntTotal">--</div><div class="l">四赛道项目</div></div>
+        <div class="num"><div class="v" id="huntAI">--</div><div class="l">AI 观点</div></div>
+        <div class="num"><div class="v" id="huntTags">--</div><div class="l">赛道数</div></div>
+      </div>
+      <span class="go">进入 →</span>
+    </a>
+    <a class="site c3" href="https://pump.md/">
+      <div class="top"><span class="d">pump.md<small>链上监测台</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="nums">
+        <div class="num"><div class="v" id="pumpNew">--</div><div class="l">今日新币</div></div>
+        <div class="num"><div class="v" id="pumpMove">--</div><div class="l">聪明钱异动</div></div>
+        <div class="num"><div class="v" id="pumpHot">--</div><div class="l">热度 TOP1</div></div>
+      </div>
+      <span class="go">进入 →</span>
+    </a>
+    <a class="site c2" href="#">
+      <div class="top"><span class="d">jinse.md<small>总览枢纽</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="nums">
+        <div class="num"><div class="v">4</div><div class="l">在线雷达</div></div>
+        <div class="num"><div class="v" id="agentN">--</div><div class="l">agent 节点</div></div>
+        <div class="num"><div class="v" id="srcN">--</div><div class="l">数据源</div></div>
+      </div>
+      <span class="go">← 你在这</span>
+    </a>
+  </div>
+
+  <h2 class="sec">AI 军团</h2>
+  <div class="airow">
+    <div class="aic"><div class="n">金色传说</div><div class="r">金 · 靠山 / 托底</div><div class="d">印星人格：决策支持、情报整合、反内耗推进。这个网络的架构师。</div><div><span class="tag">Hermes</span><span class="tag">情报</span><span class="tag">决策</span></div></div>
+    <div class="aic"><div class="n">金沐</div><div class="r">体系枢纽 / 审计</div><div class="d">跨 agent 协作、独立审计、体系健康。看住全局，不让任何一个环节空转。</div><div><span class="tag">OpenClaw</span><span class="tag">审计</span><span class="tag">调度</span></div></div>
+    <div class="aic"><div class="n">金淬</div><div class="r">编程手 / 落地</div><div class="d">把判断变成代码、把想法变成工具。管道、扫描器、自动化的执行层。</div><div><span class="tag">编程</span><span class="tag">自动化</span><span class="tag">落地</span></div></div>
+  </div>
+
+  <h2 class="sec">数据源透明</h2>
+  <div class="src">
+    <span class="s">RootData（四赛道新收录）</span>
+    <span class="s">Binance / Gate / Bybit / OKX funding</span>
+    <span class="s">GMGN 链上</span>
+    <span class="s">OnchainOS</span>
+    <span class="s">DexScreener</span>
+    <span class="s">公开市场数据 · 全脱敏</span>
+  </div>
+
+  <footer><span>jinse.md · © 2026 张诚顺 · 以诚致顺</span><span>本地原型 v0.3</span></footer>
+</div>
+
+<script>
+/* ===== 主题切换 ===== */
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='light'?'☀️':'🌙';try{localStorage.setItem('rd-theme',t)}catch(e){}}
+(function(){let s='dark';try{s=localStorage.getItem('rd-theme')||'dark'}catch(e){}if(s!=='light')s='dark';applyTheme(s)})();
+document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+
+/* ===== 四站摘要（真实管道接入后替换为 JSON 加载） ===== */
+const SUMMARY = {
+  arb:{cand:50, ok:0, net:'-110.9 bps', ts:new Date().toISOString().slice(0,16)},
+  hunt:{total:160, ai:160, tags:'AI/游戏/基建/RWA'},
+  pump:{new:8, move:4, hot:'PYRATE'}
+};
+document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
+document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
+document.getElementById('arbNet').textContent=SUMMARY.arb.net;
+document.getElementById('huntTotal').textContent=SUMMARY.hunt.total;
+document.getElementById('huntAI').textContent=SUMMARY.hunt.ai+' 条';
+document.getElementById('huntTags').textContent=SUMMARY.hunt.tags;
+document.getElementById('pumpNew').textContent=SUMMARY.pump.new;
+document.getElementById('pumpMove').textContent=SUMMARY.pump.move;
+document.getElementById('pumpHot').textContent=SUMMARY.pump.hot;
+document.getElementById('agentN').textContent='3';
+document.getElementById('srcN').textContent='5';
+document.getElementById('uptime').textContent='24h';
+document.getElementById('lastUpd').textContent=SUMMARY.arb.ts.replace('T',' ')+' UTC';
+</script>
 </body>
 </html>
