@@ -184,12 +184,8 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);doc
 (function(){let s='dark';try{s=localStorage.getItem('rd-theme')||'dark'}catch(e){}if(s!=='light')s='dark';applyTheme(s)})();
 document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
 
-/* ===== 四站摘要（真实管道接入后替换为 JSON 加载） ===== */
-const SUMMARY = {
-  arb:{cand:50, ok:0, net:'-110.9 bps', ts:new Date().toISOString().slice(0,16)},
-  hunt:{total:160, ai:160, tags:'AI/游戏/基建/RWA'},
-  pump:{new:8, move:4, hot:'PYRATE'}
-};
+/* ===== 四站摘要（build_site.py 注入真实数据） ===== */
+const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-87.6 bps", "ts": "2026-08-28T07:49"}, "hunt": {"total": 200, "ai": 160, "tags": "AI/游戏/基建/RWA"}, "pump": {"new": 3, "move": 3, "hot": "fone"}};
 document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
 document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
 document.getElementById('arbNet').textContent=SUMMARY.arb.net;
