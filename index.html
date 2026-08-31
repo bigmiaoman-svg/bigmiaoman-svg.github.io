@@ -185,7 +185,7 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);doc
 document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
 
 /* ===== 四站摘要（build_site.py 注入真实数据） ===== */
-const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-76.9 bps", "ts": "2026-08-30T19:00"}, "hunt": {"total": 199, "ai": 160, "tags": "AI/游戏/基建/RWA"}, "pump": {"new": 3, "move": 3, "hot": "fone"}};
+const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-62.9 bps", "ts": "2026-08-31T19:00"}, "hunt": {"total": 199, "ai": 160, "tags": "AI/游戏/基建/RWA"}, "pump": {"new": 3, "move": 3, "hot": "fone"}};
 document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
 document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
 document.getElementById('arbNet').textContent=SUMMARY.arb.net;
