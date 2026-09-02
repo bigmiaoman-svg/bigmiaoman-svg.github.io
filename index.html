@@ -114,14 +114,15 @@ footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px
   <div class="statusbar">
     <span class="dot"></span>
     <span>系统在线 <b id="uptime">--</b></span>
-    <span class="badge-24h">四站 24H 更新一次</span>
     <span><b id="lastUpd">--</b> 上次全量更新</span>
+    <span class="badge-24h" id="freqBadge" title="各站数据刷新频率不同，见下方卡片">刷新频率见卡片</span>
   </div>
 
   <h2 class="sec">实时数据墙</h2>
   <div class="grid">
     <a class="site c1" href="https://arb.md/">
       <div class="top"><span class="d">arb.md<small>套利监控台</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="meta"><span id="arbTs">--</span> · <b id="arbFreq">--</b></div>
       <div class="nums">
         <div class="num"><div class="v" id="arbCand">--</div><div class="l">候选对</div></div>
         <div class="num"><div class="v" id="arbOk">--</div><div class="l">可交易</div></div>
@@ -131,6 +132,7 @@ footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px
     </a>
     <a class="site c4" href="https://hunt.md/">
       <div class="top"><span class="d">hunt.md<small>新项目雷达</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="meta"><span id="huntTs">--</span> · <b id="huntFreq">--</b></div>
       <div class="nums">
         <div class="num"><div class="v" id="huntTotal">--</div><div class="l">四赛道项目</div></div>
         <div class="num"><div class="v" id="huntAI">--</div><div class="l">AI 观点</div></div>
@@ -140,6 +142,7 @@ footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px
     </a>
     <a class="site c3" href="https://pump.md/">
       <div class="top"><span class="d">pump.md<small>链上监测台</small></span><span class="live"><span class="sd"></span>LIVE</span></div>
+      <div class="meta"><span id="pumpTs">--</span> · <b id="pumpFreq">--</b></div>
       <div class="nums">
         <div class="num"><div class="v" id="pumpNew">--</div><div class="l">今日新币</div></div>
         <div class="num"><div class="v" id="pumpMove">--</div><div class="l">聪明钱异动</div></div>
@@ -185,7 +188,7 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);doc
 document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
 
 /* ===== 四站摘要（build_site.py 注入真实数据） ===== */
-const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-422.3 bps", "ts": "2026-09-02T04:35"}, "hunt": {"total": 201, "ai": 160, "tags": "AI/游戏/基建/RWA"}, "pump": {"new": 3, "move": 3, "hot": "fone"}};
+const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-422.3 bps", "ts": "2026-09-02T04:35", "freq": "每天 03:00"}, "hunt": {"total": 201, "ai": 160, "tags": "AI/游戏/基建/RWA", "freq": "RootData 3 天 + PureAlpha 12h", "ts_rd": "2026-09-02", "ts_pa": "2026-09-02T04:15:41Z"}, "pump": {"new": 3, "move": 3, "hot": "fone", "freq": "云端每 15 分钟", "ts": "2026-09-02T09:56"}};
 document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
 document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
 document.getElementById('arbNet').textContent=SUMMARY.arb.net;
@@ -199,6 +202,11 @@ document.getElementById('agentN').textContent='3';
 document.getElementById('srcN').textContent='5';
 document.getElementById('uptime').textContent='24h';
 document.getElementById('lastUpd').textContent=SUMMARY.arb.ts.replace('T',' ')+' UTC';
+// 各卡刷新频率 + 更新时间提示（2026-09-02 诚顺要求：板块都要标注多久刷新一次）
+function _fmt(ts){ if(!ts) return '--'; return ts.replace('T',' ')+' UTC'; }
+if(SUMMARY.arb) { document.getElementById('arbTs').textContent=_fmt(SUMMARY.arb.ts); document.getElementById('arbFreq').textContent=(SUMMARY.arb.freq||'--'); }
+if(SUMMARY.hunt){ document.getElementById('huntTs').textContent=(SUMMARY.hunt.ts_rd||SUMMARY.hunt.ts_pa||'--')+' 起'; document.getElementById('huntFreq').textContent=(SUMMARY.hunt.freq||'--'); }
+if(SUMMARY.pump){ document.getElementById('pumpTs').textContent=_fmt(SUMMARY.pump.ts); document.getElementById('pumpFreq').textContent=(SUMMARY.pump.freq||'--'); }
 </script>
 </body>
 </html>
