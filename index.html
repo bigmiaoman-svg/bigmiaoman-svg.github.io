@@ -89,6 +89,8 @@ h2.sec::before{content:'';width:4px;height:16px;border-radius:2px;background:var
 .src .s{font-size:11px;color:var(--dim2);background:var(--card2);border:1px solid var(--line);padding:3px 10px;border-radius:99px}
 
 footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px;color:var(--dim2)}
+footer a{color:var(--dim2);text-decoration:none;border-bottom:1px dashed var(--line2);padding-bottom:1px}
+footer a:hover{color:var(--gold);border-bottom-color:rgba(240,185,11,.5)}
 @media(max-width:760px){.grid,.airow{grid-template-columns:1fr}.wrap{padding:0 12px 40px}}
 </style>
 </head>
@@ -178,7 +180,7 @@ footer{margin-top:34px;display:flex;justify-content:space-between;font-size:11px
     <span class="s">公开市场数据 · 全脱敏</span>
   </div>
 
-  <footer><span>jinse.md · © 2026 情报网络</span><span>四站 24H 更新</span></footer>
+  <footer><span>jinse.md · © 2026 情报网络</span><span><a href="https://t.me/tandaocdao" target="_blank" rel="noopener">电报 @tandaocdao</a> · 四站 24H 更新</span></footer>
 </div>
 
 <script>
@@ -188,7 +190,7 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);doc
 document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
 
 /* ===== 四站摘要（build_site.py 注入真实数据） ===== */
-const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-154.3 bps", "ts": "2026-09-03T19:00", "freq": "每天 03:00"}, "hunt": {"total": 201, "ai": 160, "tags": "AI/游戏/基建/RWA", "freq": "RootData 3 天 + PureAlpha 12h", "ts_rd": "2026-09-03", "ts_pa": "2026-09-04T04:15:28Z"}, "pump": {"new": 3, "move": 3, "hot": "fone", "freq": "云端每 15 分钟", "ts": "2026-09-04T03:56"}};
+const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-59.1 bps", "ts": "2026-09-04T05:11", "freq": "每天 03:00"}, "hunt": {"total": 201, "ai": 160, "tags": "AI/游戏/基建/RWA", "freq": "RootData 3 天 + PureAlpha 12h", "ts_rd": "2026-09-03", "ts_pa": "2026-09-04T04:15:28Z"}, "pump": {"new": 3, "move": 3, "hot": "fone", "freq": "云端每 15 分钟", "ts": "2026-09-04T04:56"}};
 document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
 document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
 document.getElementById('arbNet').textContent=SUMMARY.arb.net;
