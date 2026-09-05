@@ -190,7 +190,7 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);doc
 document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
 
 /* ===== 四站摘要（build_site.py 注入真实数据） ===== */
-const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-383.2 bps", "ts": "2026-09-04T19:00", "freq": "每天 03:00"}, "hunt": {"total": 201, "ai": 160, "tags": "AI/游戏/基建/RWA", "freq": "RootData 3 天 + PureAlpha 12h", "ts_rd": "2026-09-03", "ts_pa": "2026-09-04T16:15:07Z"}, "pump": {"new": 3, "move": 3, "hot": "fone", "freq": "云端每 15 分钟", "ts": "2026-09-04T18:56"}};
+const SUMMARY = {"arb": {"cand": 10, "ok": 0, "net": "-383.2 bps", "ts": "2026-09-04T19:00", "freq": "每天 03:00"}, "hunt": {"total": 198, "ai": 160, "tags": "AI/游戏/基建/RWA", "freq": "RootData 3 天 + PureAlpha 12h", "ts_rd": "2026-09-03", "ts_pa": "2026-09-05T16:15:43Z"}, "pump": {"new": 3, "move": 3, "hot": "fone", "freq": "云端每 15 分钟", "ts": "2026-09-05T15:54"}};
 document.getElementById('arbCand').textContent=SUMMARY.arb.cand;
 document.getElementById('arbOk').textContent=SUMMARY.arb.ok;
 document.getElementById('arbNet').textContent=SUMMARY.arb.net;
